@@ -1,0 +1,88 @@
+cluster 
+nodes
+images 
+containers 
+pods 
+
+we can push own image to docker hub 
+
+
+
+IN company --- 
+whenever commit happen on master branch of github 
+new image is created, push to docker hub 
+and pull wherever application running 
+
+
+doker run <image_name> -- run the image, if not present it will pull from docker hub and run it 
+docker pull <image_name> -- to pull the image from docker hub
+docker build -t <image_name> .  -- to build the image from docker file
+docker push <image_name> -- to push the image to docker hub
+docker images -- to see the images present in local system
+docker ps -- to see the running containers
+docker ps -a -- to see all containers including stopped ones
+docker stop <container_id> -- to stop the container
+docker rm <container_id> -- to remove the container
+docker rmi <image_id> -- to remove the image from local system
+docker exec -it <container_id> /bin/bash -- to get inside the container
+docker logs <container_id> -- to see the logs of the container
+docker-compose up -d -- to run the multi container application in detached mode
+docker-compose down -- to stop and remove the multi container application
+docker-compose ps -- to see the running containers in the multi container application
+docker-compose build -- to build the images for the multi container application
+docker-compose logs -- to see the logs of the multi container application
+docker-compose.yml -- file to define multi container application
+dockerfile -- file to define the image
+
+
+vultr.com 
+
+
+cluster -- multiple nodes (machines) connected together to work as a single unit
+nodes -- machines (VMs) in the cluster
+
+pods -- smallest unit in kubernetes, can have one or more containers
+containers -- run the application, can have multiple containers in a pod
+
+deployment -- to manage the pods, ensure desired number of pods are running
+
+kubernetes start _______ 
+kubectl -- command line tool to interact with kubernetes cluster
+kubectl get nodes -- to see the nodes in the cluster
+kubectl get pods -- to see the pods in the cluster
+kubectl get deployments -- to see the deployments in the cluster
+kubectl create -f <file_name>.yaml -- to create resources from yaml file
+kubectl apply -f <file_name>.yaml -- to create or update resources from yaml file
+kubectl delete -f <file_name>.yaml -- to delete resources from yaml file
+kubectl describe pod <pod_name> -- to see the details of the pod    
+kubectl logs <pod_name> -- to see the logs of the pod
+kubectl exec -it <pod_name> -- /bin/bash -- to get inside the pod
+kubectl scale deployment <deployment_name> --replicas=<number_of_replicas> -- to scale the deployment
+kubectl expose deployment <deployment_name> --type=NodePort --port      
+=<port_number> -- to expose the deployment
+kubectl get services -- to see the services in the cluster
+kubectl get svc -- to see the services in the cluster
+kubectl delete pod <pod_name> -- to delete the pod
+kubectl rollout status deployment/<deployment_name> -- to see the rollout status of the deployment
+kubectl set image deployment/<deployment_name> <container_name>=<new_image>:<tag> -- to update the image of the container in the deployment 
+
+
+
+kind? -- kubernetes insider docker. 
+used for creating k8s cluster locally 
+
+
+create 1 node cluster using kind
+kind create cluster --name <cluster_name> --config <config_file>.yaml
+kind cluster get 
+kind delete cluster --name <cluster_name>
+
+control pane (master node)
+worker node
+even docker ps gives the container 
+
+
+kubectl
+kubectl run nginx --image=nginx --port=80
+
+
