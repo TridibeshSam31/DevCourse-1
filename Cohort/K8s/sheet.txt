@@ -86,3 +86,55 @@ kubectl
 kubectl run nginx --image=nginx --port=80
 
 
+deployment in k8s 
+is higher level abstraction over pods
+
+kubectl create deployment <deployment_name> --image=<image_name> --replicas=<number_of_replicas>
+
+
+deployment 
+take care about 
+starting pods 
+rolling them back 
+updating pods 
+bringing them back up 
+
+feature deployment brings 
+:scaling 
+:rolling updates
+:rollback capabilities 
+
+diff between pod and deployment 
+pod: smallest unit in k8s, can have one or more containers
+represent a single instance of a running process in k8s
+
+Deployments: 
+higher level controller 
+manages set of identical pods 
+ensure desired number of pods are running
+provide declarative updates to pods and replica sets
+
+
+
+manifest file for deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:               
+  name: my-deployment
+  spec:
+  replicas: 3
+  selector:
+  matchLabels:
+  app: my-app
+  template:
+   metadata:
+        labels:
+        app: my-app
+    spec:
+        containers:
+            - name: my-container
+            image: my-image:latest
+            ports:
+            - containerPort: 80
+to create deployment using manifest file
+kubectl apply -f <deployment_file>.yaml                                                                                                 
